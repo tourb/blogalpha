@@ -13,14 +13,15 @@
           </el-form-item>
         </el-form>
         <!-- 登录 -->
-        <el-button type="primary" round>注册</el-button>
-        <p>已有账号？点击登录</p>
+        <el-button type="primary" round @click="register">注册</el-button>
+        <p>已有账号？<router-link to="/">点击登录</router-link></p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import request from '@/helper/request'
 export default {
   data () {
     return {
@@ -30,6 +31,12 @@ export default {
         pwd: ''
       }
     }
+  },
+  methods: {
+    register () {
+      request.register({ username: this.name, password: this.pwd })
+    }
+
   }
 }
 </script>

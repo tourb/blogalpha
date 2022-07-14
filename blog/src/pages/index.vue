@@ -6,19 +6,24 @@
         <!-- 头像 -->
         <div class="imgArea">
           <img :src="item.user.avatar" alt="头像" />
-          <p>{{ item.user.username }}</p>
+          <p>
+            <router-link :to="`/detail/${item.id}`">{{ item.user.username }}</router-link>
+          </p>
         </div>
         <!-- 标题 -->
         <div class="titleArea">
-          <h3>{{ item.title }}</h3>
+          <h3>
+            <router-link :to="`/detail/${item.id}`">{{ item.title }}</router-link>
+          </h3>
         </div>
         <!-- 文章内容 -->
         <div class="sectionArea">
           <p>
-            {{ item.description }}
+            <router-link :to="`/detail/${item.id}`">{{ item.description }}</router-link>
           </p>
         </div>
       </div>
+
       <div class="block">
         <el-pagination layout="prev, pager, next" :total="total" :current-page="page" @current-change="onPageChange">
         </el-pagination>
@@ -62,6 +67,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+a {
+  color: black;
+}
 .main {
   max-width: 1000px;
   min-width: 300px;

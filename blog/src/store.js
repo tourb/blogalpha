@@ -30,7 +30,7 @@ export default new Vuex.Store({
     async checkLogin ({ commit, state }) {
       if (state.isLogin) return true
       let res = await request.getInfo()
-      console.log(res.data)
+      // console.log(res.data)
       commit('setLogin', { isLogin: res.isLogin })
       if (!state.isLogin) return false
       commit('setUser', { user: res.data })

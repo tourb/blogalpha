@@ -3,7 +3,7 @@
     <exitbutton></exitbutton>
     <section class="main">
       <div class="image">
-        <img src="https://pic4.zhimg.com/v2-c2d2e6673014e5d3e408af6f9e66efdc_im.jpg?source=32738c0c" alt="" />
+        <img :src="user.avatar" alt="" />
         <h3>{{ user.username }}</h3>
       </div>
       <div class="textSection" v-for="(blog, index) in blogs" :key="index">
@@ -25,7 +25,7 @@
         </div>
         <!-- 按钮 -->
         <div class="buttonTextmain">
-          <el-button type="text" @click="editTx">编辑</el-button>
+          <el-button type="text"><router-link :to="`/edit/${blog.id}`">编辑</router-link></el-button>
           <el-button type="text" @click.prevent="del(blog.id)">删除</el-button>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default {
   methods: {
     getUser () {
       request.getBlogsByUserId(this.user.id, { page: this.page }).then(res => {
-        console.log(res)
+        // console.log(res)
         this.blogs = res.data
         this.page = res.page
         this.total = res.total
